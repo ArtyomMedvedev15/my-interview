@@ -1,0 +1,53 @@
+name: Project test & build
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: prop
+        ports:
+          - 32769:5432
+        options: --health-cmd="pg_isready -U postgres" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3 
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'  
+          distribution: 'temurin'
+          architecture: 'x64'
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          until pg_isready -h localhost -p 32769 -U postgres; do
+            echo "Waiting for PostgreSQL to start..."
+            sleep 2
+          done
+          echo "PostgreSQL is ready."
+
+      - name: Install 🔧
+        run: mvn clean install -DskipTests -f pom.xml
+
+      - name: Run Test 🔨
+        run: mvn test -f pom.xml
+
+      - name: Build 👷
+        run: mvn clean compile -f pom.xml
