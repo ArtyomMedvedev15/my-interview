@@ -44,10 +44,10 @@ jobs:
           echo "PostgreSQL is ready."
 
       - name: Install 🔧
-        run: mvn clean install -DskipTests -f my-interview/pom.xml
+        run: mvn clean install -DskipTests -f /pom.xml
 
       - name: Run Test 🔨
-        run: mvn test -f my-interview/pom.xml
+        run: mvn test -f /pom.xml
 
       - name: Build 👷
-        run: mvn clean compile -f my-interview/pom.xml
+        run: mvn clean compile -f /pom.xml
