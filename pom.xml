@@ -139,9 +139,7 @@
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.9</version>
-
         <executions>
-
           <execution>
             <id>prepare-agent</id>
             <goals>
@@ -156,16 +154,21 @@
               <goal>report</goal>
             </goals>
           </execution>
+
+          <execution>
+            <id>report-csv</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/jacoco-report-csv</outputDirectory>
+              <output>csv</output>
+            </configuration>
+          </execution>
         </executions>
-        <configuration>
-          <dataFile>${project.build.directory}/jacoco.exec</dataFile>
-          <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
-          <output>file</output>
-          <csv>true</csv>
-          <xml>false</xml>
-          <html>true</html>
-        </configuration>
       </plugin>
+
     </plugins>
   </build>
 
