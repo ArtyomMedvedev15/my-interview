@@ -1,5 +1,6 @@
 package os.project.myinterview.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,6 @@ public class Topic {
 
     private String name;
 
-    @OneToMany(mappedBy = "topic")
+    @OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE)
     private List<Question> questions;
 }
