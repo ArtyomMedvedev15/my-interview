@@ -51,3 +51,11 @@ jobs:
 
       - name: Build 👷
         run: mvn clean compile -f pom.xml
+
+      - name: Generate JaCoCo Reports 📊
+        run: mvn verify -f pom.xml
+
+      - name: Generate JaCoCo Badge 🏅
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          jacoco-csv-file: target/jacoco-report-csv/jacoco.csv
