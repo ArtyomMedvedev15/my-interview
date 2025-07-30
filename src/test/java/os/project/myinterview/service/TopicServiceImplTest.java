@@ -21,6 +21,7 @@ import os.project.myinterview.repository.TopicRepository;
 import os.project.myinterview.service.dto.TopicDto;
 import os.project.myinterview.service.exception.TopicAlreadyExistsException;
 import os.project.myinterview.service.exception.TopicNotFoundException;
+import os.project.myinterview.service.impl.TopicServiceImpl;
 import os.project.myinterview.service.mapper.TopicMapper;
 
 @ExtendWith(MockitoExtension.class)

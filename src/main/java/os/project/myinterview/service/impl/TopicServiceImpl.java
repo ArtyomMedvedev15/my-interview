@@ -1,4 +1,4 @@
-package os.project.myinterview.service;
+package os.project.myinterview.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import os.project.myinterview.model.Topic;
 import os.project.myinterview.repository.TopicRepository;
+import os.project.myinterview.service.api.TopicServiceApi;
 import os.project.myinterview.service.dto.TopicDto;
 import os.project.myinterview.service.exception.TopicAlreadyExistsException;
 import os.project.myinterview.service.exception.TopicNotFoundException;

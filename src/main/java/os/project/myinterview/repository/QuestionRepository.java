@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import os.project.myinterview.model.Question;
+import os.project.myinterview.model.enums.Difficulty;
 
 public interface QuestionRepository extends JpaRepository<Question, Long>, JpaSpecificationExecutor<Question> {
 
     List<Question> findByTopic_Id(Long topicId);
+
+    List<Question> findAllByTopic_IdAndDifficulty(Long topicId, Difficulty difficulty);
 
     @Query(value = """
                 SELECT * FROM question 

@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import os.project.myinterview.model.Question;
 
 @Getter
 @Setter
@@ -19,5 +18,5 @@ public class TopicDto {
     @NotBlank(message = "Название темы не может быть пустым")
     @Size(max = 255, message = "Название темы не должно превышать 255 символов")
     private String name;
-    private List<Question> questions;
+    private List<QuestionDto> questions;
 }

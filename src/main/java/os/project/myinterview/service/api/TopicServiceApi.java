@@ -1,4 +1,4 @@
-package os.project.myinterview.service;
+package os.project.myinterview.service.api;
 
 import java.util.List;
 import java.util.Optional;
