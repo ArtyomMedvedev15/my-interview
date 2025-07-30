@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import os.project.myinterview.model.Topic;
 import os.project.myinterview.service.dto.TopicDto;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = QuestionMapper.class)
 public interface TopicMapper {
 
 
